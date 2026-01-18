@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
-    
         * {
             margin: 0;
             padding: 0;
@@ -18,9 +17,13 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #fff;
+            margin: 0;
             min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+
+            /* Background gambar planet */
+            background: url('planet.jpg') center/cover no-repeat;
         }
 
         header {
@@ -103,152 +106,113 @@
             }
         }
     
-    /* ===== GALAXY BACKGROUND ===== */
-body {
-    margin: 0;
-    min-height: 100vh;
-    background: radial-gradient(circle at bottom, #1b2735 0%, #090a0f 100%);
-    color: #fff;
-    overflow-x: hidden;
+        .card {
+    background: rgba(0, 0, 0, 0.6); /* ubah dari 0.08 jadi 0.6 */
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 25px;
+    transition: transform 0.3s ease;
 }
-
-/* Bintang statis bergerak */
-.stars, .stars2, .stars3 {
+    
+    .background-overlay {
     position: fixed;
+    top: 0; left: 0;
     width: 100%;
-    height: 2000px;
-    top: 0;
-    left: 0;
-    background: transparent;
-    z-index: -3;
+    height: 100%;
+    background: rgba(0,0,0,0.4); /* semi gelap */
+    z-index: -1;
 }
-
-.stars {
-    box-shadow:
-        50px 100px white,
-        200px 300px white,
-        400px 150px white,
-        600px 500px white,
-        800px 250px white,
-        1000px 600px white;
-    animation: starMove 60s linear infinite;
-}
-
-.stars2 {
-    box-shadow:
-        120px 200px white,
-        320px 450px white,
-        520px 120px white,
-        720px 350px white,
-        920px 550px white;
-    animation: starMove 120s linear infinite;
-}
-
-.stars3 {
-    box-shadow:
-        180px 350px white,
-        380px 150px white,
-        580px 450px white,
-        780px 250px white,
-        980px 650px white;
-    animation: starMove 180s linear infinite;
-}
-
-@keyframes starMove {
-    from { transform: translateY(0); }
-    to { transform: translateY(-1000px); }
-}
-
-/* ===== SHOOTING STAR ===== */
-.shooting-star {
-    position: fixed;
-    top: -10%;
-    left: 50%;
-    width: 2px;
-    height: 120px;
-    background: linear-gradient(white, rgba(255,255,255,0));
+    
+    /* Animasi card muncul */
+.card {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 25px;
+    transition: transform 0.3s ease, opacity 0.6s ease;
+    
+    /* animasi awal */
     opacity: 0;
-    transform: rotate(45deg);
-    z-index: -2;
-    animation: shoot 5s linear infinite;
+    transform: translateY(20px);
 }
 
-.shooting-star:nth-child(2) {
-    animation-delay: 1.5s;
-    left: 20%;
+/* class aktif ketika muncul */
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.shooting-star:nth-child(3) {
-    animation-delay: 3s;
-    left: 80%;
+/* Hover tetap ada efek terangkat */
+.card:hover {
+    transform: translateY(-5px);
 }
 
-@keyframes shoot {
-    0% {
-        opacity: 0;
-        transform: translateY(0) rotate(45deg);
-    }
-    10% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(1200px) rotate(45deg);
-    }
+/* Teks tetap jelas */
+.card h2, .card p, .motto {
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
     </style>
 </head>
 <body>
-    <div class="stars"></div>
-<div class="stars2"></div>
-<div class="stars3"></div>
+    <div class="background-overlay"></div>
+    
+    <header>
+        <h1>SELAMAT DATANG DI KELAS VII</h1>
+        <p>Portal resmi kelas — tempat informasi, dokumentasi, dan kebersamaan kami</p>
+    </header>
 
-<div class="shooting-star"></div>
-<div class="shooting-star"></div>
-<div class="shooting-star"></div>
+    <div class="container">
+        <div class="card">
+            <h2>Profil Kelas</h2>
+            <p>
+                Kelas VII adalah kelas yang berisi siswa-siswi dengan karakter beragam,
+                kreatif, dan penuh semangat belajar. Kami menjunjung tinggi kebersamaan,
+                saling menghargai, dan kerja sama dalam setiap kegiatan akademik maupun non-akademik.
+            </p>
+        </div>
 
-<header>
-<h1>SELAMAT DATANG DI KELAS VII</h1>
-<p>Portal resmi kelas — tempat informasi, dokumentasi, dan kebersamaan kami</p>
-</header>
+        <div class="card">
+            <h2>Moto Kelas</h2>
+            <p class="motto">
+                "Bersatu dalam kebersamaan, berprestasi dengan semangat"
+            </p>
+        </div>
 
-<div class="container">
+        <div class="card">
+            <h2>Sejarah Singkat</h2>
+            <p>
+                Kelas VII terbentuk pada awal tahun ajaran baru sebagai langkah awal perjalanan
+                kami di jenjang pendidikan menengah. Sejak awal, kelas ini dibangun dengan
+                semangat kebersamaan, kedisiplinan, dan tekad untuk terus berkembang menjadi
+                kelas yang aktif, solid, dan berprestasi.
+            </p>
+        </div>
 
-    <div class="card">
-       <h2>Profil Kelas</h2>
-<p>
-Kelas VII adalah kelas yang berisi siswa-siswi dengan karakter beragam,
-kreatif, dan penuh semangat belajar. Kami menjunjung tinggi kebersamaan,
-saling menghargai, dan kerja sama dalam setiap kegiatan akademik maupun non-akademik.
-</p>
+        <div class="cta">
+            <a href="https://k-website8.vercel.app/">Masuk ke Web Inti Kelas</a>
+        </div>
     </div>
 
-    <div class="card">
-        <h2>Moto Kelas</h2>
-<p class="motto">
-    "Bersatu dalam kebersamaan, berprestasi dengan semangat"
-</p>
-    </div>
+    <footer>
+        © 2025 Portal Kelas VII | Dibuat dengan ❤️ oleh warga kelas
+    </footer>
+    
+    <!-- Tambahkan script di bawah sebelum </body> -->
+<script>
+    // animasi saat scroll masuk viewport
+    const cards = document.querySelectorAll('.card');
 
-    <div class="card">
-        <h2>Sejarah Singkat</h2>
-<p>
-Kelas VII terbentuk pada awal tahun ajaran baru sebagai langkah awal perjalanan
-kami di jenjang pendidikan menengah. Sejak awal, kelas ini dibangun dengan
-semangat kebersamaan, kedisiplinan, dan tekad untuk terus berkembang menjadi
-kelas yang aktif, solid, dan berprestasi.
-</p>
-    </div>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.classList.add('show');
+            }
+        });
+    }, {threshold: 0.2}); // muncul saat 20% card terlihat
 
-    <div class="cta">
-        <a href="https://k-website8.vercel.app/">Masuk ke Web Inti Kelas</a>
-    </div>
-
-</div>
-
-<footer>
-    © 2025 Portal Kelas VII | Dibuat dengan ❤️ oleh warga kelas
-</footer>
-
+    cards.forEach(card => observer.observe(card));
+</script>
 </body>
 </html>
